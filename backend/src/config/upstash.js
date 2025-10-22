@@ -13,7 +13,7 @@ const rateLimiter = async (req, res, next) => {
   try {
     const ratelimit = new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(5, "20 s"),
+      limiter: Ratelimit.slidingWindow(100, "60 s"),
     });
 
     const { success } = await ratelimit.limit("global_key");
